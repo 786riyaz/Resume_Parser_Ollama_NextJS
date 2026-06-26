@@ -100,7 +100,7 @@ function extractJson(raw: string): unknown {
 
 async function askOllama(prompt: string): Promise<string> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 20000);
+  const timeout = setTimeout(() => controller.abort(), 60000);
 
   const response = await fetch(`${OLLAMA_BASE_URL}/api/chat`, {
     method: "POST",
@@ -147,7 +147,7 @@ export async function extractWithOllama(resumeText: string) {
       return candidateSchema.parse(cleaned);
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {
-        throw new Error("Ollama extraction timed out after 20 seconds.");
+        throw new Error("Ollama extraction timed out after 60 seconds.");
       }
       lastError = error;
     }
