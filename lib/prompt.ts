@@ -46,6 +46,7 @@ Use this exact JSON shape:
 }
 
 Comment should be a short HR-friendly summary of the academic profile. If important fields are missing, mention that manual review is needed.
+and this given JSON is then gonna be enterd into the excel so keep the values in the JSON as simple as possible. For example, if the name is "John Doe", just return "John Doe" and not "Mr. John Doe" or "John Doe (Candidate)". and same for other fields. If the value is missing, use null. and if the value is present, just return the value as it is in the resume. Do not add any extra text or formatting just proper string value to store in the excel cell. 
 
 Resume text:
 """${buildResumeContext(resumeText)}"""`;
