@@ -2,7 +2,7 @@
  * mergeFiles.js
  * Project File Merger
  * -------------------
- * Scans the entire project directory recursively and merges all files into "Complete Code.txt"
+ * Scans the entire project directory recursively and merges all files into "Resume Parser Complete Code.txt"
  *
  * Supports ignore rules using merge-ignore.txt
  */
@@ -17,7 +17,7 @@ console.log("Root DIR :: ", ROOT_DIR);
 const Combined_Path = ROOT_DIR + `\\utils\\MergeCodeFile`;
 console.log("Combined DIR :: ", Combined_Path);
 
-const OUTPUT_FILE = path.join(ROOT_DIR, "Complete Code.txt");
+const OUTPUT_FILE = path.join(ROOT_DIR, "Resume Parser Complete Code.txt");
 const IGNORE_FILE = path.join(Combined_Path, "merge-ignore.txt");
 
 const ig = ignore();
