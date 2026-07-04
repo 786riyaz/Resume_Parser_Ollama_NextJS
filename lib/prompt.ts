@@ -225,6 +225,8 @@ Examples:
 
 "Good academic record. JEE Percentile 98.73%. Graduation details available."
 
+"If the candidate has achieved any gold medal, award, or scholarship, mention it in the comment field with proper details and formatting."
+
 If important academic information is missing, clearly mention:
 "Manual review required due to missing academic information."
 
