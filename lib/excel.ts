@@ -18,7 +18,8 @@ const columns: Array<{ header: string; key: keyof Candidate; width: number }> = 
   { header: "Graduation Year", key: "graduationYear", width: 18 },
   { header: "JEE Rank", key: "jeeRank", width: 16 },
   { header: "JEE Percentile", key: "jeePercentile", width: 18 },
-  { header: "Comment", key: "comment", width: 42 }
+  { header: "Comment", key: "comment", width: 42 },
+  { header: "Location", key: "location", width: 42 }
 ];
 
 export async function createCandidateWorkbook(candidates: Candidate[]): Promise<Buffer> {

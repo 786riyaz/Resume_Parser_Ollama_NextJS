@@ -56,7 +56,8 @@ Return ONLY this exact JSON structure:
   "college": null,
   "branch": null,
   "graduationYear": null,
-  "comment": "Review required."
+  "comment": "Review required.",
+  "location": null
 }
 
 =========================
@@ -229,6 +230,135 @@ Examples:
 
 If important academic information is missing, clearly mention:
 "Manual review required due to missing academic information."
+
+=========================
+LOCATION
+=========================
+
+The "location" field should contain the candidate's primary address or location exactly as it appears in the resume, cleaned and standardized for HR records.
+
+Extract ONLY explicitly mentioned location information.
+
+Never infer, guess, or construct an address.
+
+Formatting Rules:
+
+1. Return the most complete location available.
+
+Preference order:
+- Full Address
+- City, State, Country
+- City, State
+- City
+- State
+- Country
+
+Examples:
+
+Resume:
+Ahmedabad, Gujarat, India
+→
+Ahmedabad, Gujarat, India
+
+Resume:
+Ahmedabad, Gujarat
+→
+Ahmedabad, Gujarat
+
+Resume:
+Surat
+→
+Surat
+
+Resume:
+New York, USA
+→
+New York, USA
+
+Resume:
+Flat No. 402, ABC Residency,
+Satellite, Ahmedabad,
+Gujarat - 380015
+→
+Flat No. 402, ABC Residency, Satellite, Ahmedabad, Gujarat 380015
+
+2. Preserve important address components when available.
+
+These may include:
+- House/Flat Number
+- Building Name
+- Street/Road
+- Area/Locality
+- Landmark
+- City
+- District
+- State
+- Postal Code / ZIP Code
+- Country
+
+3. Clean formatting.
+
+- Remove unnecessary line breaks.
+- Remove duplicate commas.
+- Remove extra spaces.
+- Normalize punctuation.
+- Convert text to Proper Title Case where appropriate.
+- Preserve official abbreviations if they are part of the address.
+
+Example:
+
+flat no 10,
+near railway station,
+AHMEDABAD, GUJARAT
+
+→
+
+Flat No. 10, Near Railway Station, Ahmedabad, Gujarat
+
+4. If multiple addresses are present:
+
+Return the candidate's current or permanent address if explicitly identified.
+
+Preference order:
+- Current Address
+- Permanent Address
+- Present Address
+- Address mentioned in contact information
+
+If none are labeled, return the first complete address found.
+
+5. Do NOT include unrelated information such as:
+- Office address
+- College address
+- Company address
+- Reference address
+- Project locations
+- Internship locations
+
+unless they are explicitly identified as the candidate's own address.
+
+6. If only a city or state is available, return only that value.
+
+Examples:
+
+Resume:
+Location: Pune
+→
+Pune
+
+Resume:
+Current City: Bangalore, Karnataka
+→
+Bangalore, Karnataka
+
+Resume:
+India
+→
+India
+
+7. If no candidate location or address is explicitly present, return:
+
+null
 
 =========================
 FINAL RULES

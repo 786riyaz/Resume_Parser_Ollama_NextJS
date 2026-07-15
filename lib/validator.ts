@@ -21,7 +21,8 @@ export const candidateSchema = z.object({
   college: nullableText,
   branch: nullableText,
   graduationYear: nullableText,
-  comment: z.string().min(1)
+  comment: z.string().min(1),
+  location: z.string().nullable()
 });
 
 export const candidateArraySchema = z.array(candidateSchema.extend({
@@ -62,6 +63,7 @@ export function cleanCandidateJson(input: unknown) {
     college: normalizeNullable(record.college),
     branch: normalizeNullable(record.branch),
     graduationYear: normalizeNullable(record.graduationYear ?? record.graduation_year),
-    comment: normalizeNullable(record.comment) ?? "Review required."
+    comment: normalizeNullable(record.comment) ?? "Review required.",
+    location: normalizeNullable(record.location) ?? ""
   };
 }

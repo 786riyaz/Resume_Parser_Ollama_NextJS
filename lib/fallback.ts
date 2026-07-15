@@ -101,7 +101,8 @@ export function buildFallbackCandidate(fileName: string, text: string, aiError?:
     college,
     branch,
     graduationYear,
-    comment: aiError ? `AI extraction needs review: ${aiError}` : "Regex fallback extraction. Review required."
+    comment: aiError ? `AI extraction needs review: ${aiError}` : "Regex fallback extraction. Review required.",
+    location: ""
   };
 }
 
@@ -125,6 +126,7 @@ export function mergeWithFallback(fileName: string, text: string, candidate: Omi
     college: candidate.college ?? fallback.college,
     branch: candidate.branch ?? fallback.branch,
     graduationYear: candidate.graduationYear ?? fallback.graduationYear,
-    comment: candidate.comment || fallback.comment
+    comment: candidate.comment || fallback.comment,
+    location: candidate.location || fallback.location
   };
 }

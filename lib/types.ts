@@ -18,6 +18,7 @@ export type Candidate = {
   branch: string | null;
   graduationYear: string | null;
   comment: string;
+  location: string;
 };
 
 export type UploadResult = {
@@ -47,6 +48,7 @@ export const emptyCandidate = (fileName = ""): Candidate => ({
   college: null,
   branch: null,
   graduationYear: null,
-  comment: "Review required."
+  comment: "Review required.",
+  location: ""
 });
 

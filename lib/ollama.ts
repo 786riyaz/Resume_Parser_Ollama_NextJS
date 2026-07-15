@@ -23,7 +23,8 @@ const resumeJsonSchema = {
     college: { type: ["string", "null"] },
     branch: { type: ["string", "null"] },
     graduationYear: { type: ["string", "null"] },
-    comment: { type: "string" }
+    comment: { type: "string" },
+    location: { type: "string" }
   },
   required: [
     "name",
@@ -42,7 +43,8 @@ const resumeJsonSchema = {
     "college",
     "branch",
     "graduationYear",
-    "comment"
+    "comment",
+    "location"
   ],
   additionalProperties: false
 };

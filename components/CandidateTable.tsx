@@ -18,7 +18,8 @@ const visibleColumns: Array<{ label: string; key: keyof Candidate; compact?: boo
   { label: "CGPA", key: "cgpa", compact: true },
   { label: "JEE Rank", key: "jeeRank", compact: true },
   { label: "JEE %", key: "jeePercentile", compact: true },
-  { label: "Comment", key: "comment" }
+  { label: "Comment", key: "comment" },
+  { label: "Location", key: "location" }
 ];
 
 export function CandidateTable({ candidates, onChange, onDelete }: CandidateTableProps) {
