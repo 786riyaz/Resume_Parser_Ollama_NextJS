@@ -1,38 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-color-scheme: light;
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-body: #0b0f19;
+  --surface: #131826;
+  --surface-alt: #171d2c;
+  --text-primary: #e8ecf3;
+  --text-secondary: #9aa5b8;
+  --text-muted: #c3ccdb;
+  --border: #262e40;
+  --border-idle: #2e3648;
+  --border-strong: #3a4356;
+  --header-bg: #0e1420;
+  --header-hover: #1c2436;
+  --accent: #4f83ff;
+  --accent-rgb: 79, 131, 255;
+  --accent-hover: #6f97ff;
+  --accent-soft: #1b2740;
+  --pill-bg: #1c2436;
+  --pill-text: #c3ccdb;
+  --danger-border: #5c2530;
+  --danger-bg: #2a1216;
+  --danger-text: #ff8a94;
+  --danger-btn-border: #b23a45;
+  --danger-btn-text: #ff8a94;
+  --danger-btn-hover: #3a161b;
+  --warning-border: #5c4a1f;
+  --warning-bg: #2a2211;
+  --warning-heading: #f0c46d;
+  --warning-text: #d9b876;
 }
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-body: #f6f7f9;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --text-primary: #172033;
+  --text-secondary: #5d697c;
+  --text-muted: #445064;
+  --border: #d7dce5;
+  --border-idle: #b9c2d0;
+  --border-strong: #172033;
+  --header-bg: #172033;
+  --header-hover: #27344b;
+  --accent: #2f6fed;
+  --accent-rgb: 47, 111, 237;
+  --accent-hover: #245bd1;
+  --accent-soft: #e7eefc;
+  --pill-bg: #e8edf4;
+  --pill-text: #445064;
+  --danger-border: #f2b8bd;
+  --danger-bg: #fff5f6;
+  --danger-text: #9f1d29;
+  --danger-btn-border: #cf3341;
+  --danger-btn-text: #b4232f;
+  --danger-btn-hover: #fff1f2;
+  --warning-border: #f2d19b;
+  --warning-bg: #fffaf0;
+  --warning-heading: #7a4b00;
+  --warning-text: #6b4a1a;
+}
+
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 body {
-margin: 0;
-background: #f6f7f9;
-color: #172033;
-font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
 button,
 input,
 textarea {
-font: inherit;
+  font: inherit;
 }
+
 button:disabled {
-cursor: not-allowed;
-opacity: 0.6;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
+
 .field-input {
-min-width: 10rem;
-width: 100%;
-border: 1px solid #d7dce5;
-border-radius: 6px;
-background: #ffffff;
-padding: 0.55rem 0.65rem;
-color: #172033;
-outline: none;
+  min-width: 10rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 0.55rem 0.65rem;
+  color: var(--text-primary);
+  outline: none;
 }
+
 .field-input:focus {
-border-color: #2f6fed;
-box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.12);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.16);
 }

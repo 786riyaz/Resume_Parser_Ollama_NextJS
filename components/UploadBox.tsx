@@ -26,16 +26,16 @@ setIsDragging(false);
 addFiles(event.dataTransfer.files);
 }}
 className={`rounded-md border-2 border-dashed p-8 transition ${
-isDragging ? "border-[#2f6fed] bg-[#edf4ff]" : "border-[#b9c2d0] bg-white"
+isDragging ? "border-[var(--accent)] bg-[var(--accent-soft)]" : "border-[var(--border-idle)] bg-[var(--surface)]"
 }`}
 >
 <div className="flex flex-col items-center justify-center gap-5 text-center">
-<div className="flex h-14 w-14 items-center justify-center rounded-md bg-[#e7eefc] text-2xl text-[#2f6fed]">
+<div className="flex h-14 w-14 items-center justify-center rounded-md bg-[var(--accent-soft)] text-2xl text-[var(--accent)]">
 PDF
 </div>
 <div>
-<h2 className="text-2xl font-semibold tracking-normal text-[#172033]">Resume Parser</h2>
-<p className="mt-2 max-w-xl text-sm leading-6 text-[#5d697c]">
+<h2 className="text-2xl font-semibold tracking-normal text-[var(--text-primary)]">Resume Parser</h2>
+<p className="mt-2 max-w-xl text-sm leading-6 text-[var(--text-secondary)]">
 Drop PDF resumes here or choose files from your computer.
 </p>
 </div>
@@ -52,11 +52,11 @@ onChange={(event) => addFiles(event.target.files)}
 type="button"
 disabled={disabled}
 onClick={() => inputRef.current?.click()}
-className="rounded-md bg-[#172033] px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[#27344b]"
+className="rounded-md bg-[var(--header-bg)] px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-[var(--header-hover)]"
 >
 Choose Files
 </button>
-<span className="text-sm text-[#5d697c]">{files.length ? `${files.length} PDF selected` : "No files selected"}</span>
+<span className="text-sm text-[var(--text-secondary)]">{files.length ? `${files.length} PDF selected` : "No files selected"}</span>
 </div>
 </div>
 </section>

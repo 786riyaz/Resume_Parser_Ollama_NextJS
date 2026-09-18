@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { CandidateTable } from "@/components/CandidateTable";
 import { Loader } from "@/components/Loader";
 import { ProgressBar } from "@/components/ProgressBar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { UploadBox } from "@/components/UploadBox";
 import type { Candidate, UploadResult } from "@/lib/types";
 type ErrorItem = {
@@ -99,20 +100,21 @@ setIsExporting(false);
 return (
 <main className="min-h-screen">
 <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:px-8">
-<header className="flex flex-col gap-3 border-b border-[#d7dce5] pb-5 sm:flex-row sm:items-end sm:justify-between">
+<header className="flex flex-col gap-3 border-b border-[var(--border)] pb-5 sm:flex-row sm:items-end sm:justify-between">
 <div>
-<h1 className="text-3xl font-bold tracking-normal text-[#172033]">AI Resume Parser</h1>
+<h1 className="text-3xl font-bold tracking-normal text-[var(--text-primary)]">AI Resume Parser</h1>
 <>
-<p className="mt-2 text-sm text-[#5d697c]">Local PDF extraction powered by Next.js, Ollama, and Excel export. </p>
-<p>Please contact the administrator before using this service, as it requires the Ollama service to be running locally on your machine.</p>
+<p className="mt-2 text-sm text-[var(--text-secondary)]">Local PDF extraction powered by Next.js, Ollama, and Excel export. </p>
+<p className="text-sm text-[var(--text-secondary)]">Please contact the administrator before using this service, as it requires the Ollama service to be running locally on your machine.</p>
 </>
 </div>
 <div className="flex flex-wrap items-center gap-3">
+<ThemeToggle />
 <button
 type="button"
 disabled={!files.length || Boolean(invalidFiles.length) || isProcessing}
 onClick={extractResumes}
-className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#2f6fed] px-5 py-3 text-sm font-semibold text-white hover:bg-[#245bd1]"
+className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white hover:bg-[var(--accent-hover)]"
 >
 {isProcessing ? <Loader /> : null}
 Extract
@@ -121,7 +123,7 @@ Extract
 type="button"
 disabled={!candidates.length || isExporting}
 onClick={downloadExcel}
-className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#172033] bg-white px-5 py-3 text-sm font-semibold text-[#172033] hover:bg-[#eef2f7]"
+className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[var(--border-strong)] bg-[var(--surface)] px-5 py-3 text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--surface-alt)]"
 >
 {isExporting ? <Loader /> : null}
 Download Excel
@@ -130,17 +132,17 @@ Download Excel
 </header>
 <UploadBox files={files} disabled={isProcessing} onFilesChange={setFiles} />
 {invalidFiles.length ? (
-<div className="rounded-md border border-[#f2b8bd] bg-[#fff5f6] p-4 text-sm text-[#9f1d29]">
+<div className="rounded-md border border-[var(--danger-border)] bg-[var(--danger-bg)] p-4 text-sm text-[var(--danger-text)]">
 {invalidFiles.length} file{invalidFiles.length === 1 ? "" : "s"} rejected. Use PDF files up to 10 MB each.
 </div>
 ) : null}
 {(isProcessing || progress > 0) ? <ProgressBar value={progress} label={status} /> : null}
 {errors.length ? (
-<section className="rounded-md border border-[#f2d19b] bg-[#fffaf0] p-4">
-<h2 className="text-sm font-semibold text-[#7a4b00]">Files needing attention</h2>
-<div className="mt-3 grid gap-2 text-sm text-[#6b4a1a]">
+<section className="rounded-md border border-[var(--warning-border)] bg-[var(--warning-bg)] p-4">
+<h2 className="text-sm font-semibold text-[var(--warning-heading)]">Files needing attention</h2>
+<div className="mt-3 grid gap-2 text-sm text-[var(--warning-text)]">
 {errors.map((error) => (
-<div key={`${error.fileName}-${error.message}`} className="rounded-md bg-white px-3 py-2">
+<div key={`${error.fileName}-${error.message}`} className="rounded-md bg-[var(--surface)] px-3 py-2">
 <strong>{error.fileName}</strong>: {error.message}
 </div>
 ))}
@@ -149,8 +151,8 @@ Download Excel
 ) : null}
 <section className="flex flex-col gap-4">
 <div className="flex flex-wrap items-center justify-between gap-3">
-<h2 className="text-xl font-semibold text-[#172033]">Candidates</h2>
-<span className="rounded-md bg-[#e8edf4] px-3 py-2 text-sm font-semibold text-[#445064]">
+<h2 className="text-xl font-semibold text-[var(--text-primary)]">Candidates</h2>
+<span className="rounded-md bg-[var(--pill-bg)] px-3 py-2 text-sm font-semibold text-[var(--pill-text)]">
 {candidates.length} total
 </span>
 </div>
@@ -160,7 +162,7 @@ onChange={updateCandidate}
 onDelete={(id) => setCandidates((current) => current.filter((candidate) => candidate.id !== id))}
 />
 {!candidates.length ? (
-<div className="rounded-md border border-[#d7dce5] bg-white p-8 text-center text-sm text-[#5d697c]">
+<div className="rounded-md border border-[var(--border)] bg-[var(--surface)] p-8 text-center text-sm text-[var(--text-secondary)]">
 Uploaded candidate details will appear here.
 </div>
 ) : null}

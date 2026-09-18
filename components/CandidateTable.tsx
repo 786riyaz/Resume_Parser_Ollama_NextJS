@@ -23,10 +23,10 @@ if (!candidates.length) {
 return null;
 }
 return (
-<div className="overflow-hidden rounded-md border border-[#d7dce5] bg-white shadow-soft">
+<div className="overflow-hidden rounded-md border border-[var(--border)] bg-[var(--surface)] shadow-soft">
 <div className="overflow-x-auto">
 <table className="min-w-[1180px] w-full border-collapse text-left text-sm">
-<thead className="bg-[#172033] text-white">
+<thead className="bg-[var(--header-bg)] text-white">
 <tr>
 {visibleColumns.map((column) => (
 <th key={column.key} className={`px-3 py-3 font-semibold ${column.compact ? "w-32" : "w-48"}`}>
@@ -38,9 +38,9 @@ return (
 </thead>
 <tbody>
 {candidates.map((candidate, index) => (
-<tr key={candidate.id} className={index % 2 === 0 ? "bg-white" : "bg-[#f8fafc]"}>
+<tr key={candidate.id} className={index % 2 === 0 ? "bg-[var(--surface)]" : "bg-[var(--surface-alt)]"}>
 {visibleColumns.map((column) => (
-<td key={column.key} className="border-t border-[#e5e9f0] px-3 py-3 align-top">
+<td key={column.key} className="border-t border-[var(--border)] px-3 py-3 align-top">
 <input
 className="field-input"
 value={String(candidate[column.key] ?? "")}
@@ -49,11 +49,11 @@ aria-label={`${column.label} for ${candidate.fileName}`}
 />
 </td>
 ))}
-<td className="border-t border-[#e5e9f0] px-3 py-3 align-top">
+<td className="border-t border-[var(--border)] px-3 py-3 align-top">
 <button
 type="button"
 onClick={() => onDelete(candidate.id)}
-className="rounded-md border border-[#cf3341] px-3 py-2 text-sm font-semibold text-[#b4232f] hover:bg-[#fff1f2]"
+className="rounded-md border border-[var(--danger-btn-border)] px-3 py-2 text-sm font-semibold text-[var(--danger-btn-text)] hover:bg-[var(--danger-btn-hover)]"
 >
 Delete
 </button>
