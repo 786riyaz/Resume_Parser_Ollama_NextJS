@@ -106,7 +106,7 @@ return (
 <>
 <p className="mt-2 text-sm text-[var(--text-secondary)]">Local PDF extraction powered by Next.js, Ollama, and Excel export. </p>
 {/* <p className="text-sm text-[var(--text-secondary)]">Please contact the administrator before using this service, as it requires the Ollama service to be running locally on your machine.</p> */}
-<p className="text-sm text-red-600 underline">Please contact the administrator before using this service, as it requires the Ollama service to be running locally on your machine.</p>
+<p className="text-sm text-red-600 underline">Please contact the administrator before using this service, as it requires the Ollama service to be running locally on admin side machine.</p>
 </>
 </div>
 <div className="flex flex-wrap items-center gap-3">
